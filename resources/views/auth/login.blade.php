@@ -3,6 +3,10 @@
 @section('title', 'Login')
 
 @section('content')
+<<<<<<< HEAD
+=======
+
+>>>>>>> eab064c8df27f26ca1055c166db3d6bbf0fff1ec
 
     <div class="flex-1 row">
         <div class="col-6 mx-auto">

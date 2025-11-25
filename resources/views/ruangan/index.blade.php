@@ -4,6 +4,7 @@
 
 @section('content')
 
+<<<<<<< HEAD
 <style>
     body {
         font-family: 'Inter', sans-serif;
@@ -117,6 +118,19 @@
             <th>Kode Ruangan</th>
             <th>Bangunan</th>
             <th>Aksi</th>
+=======
+<div>
+    <a href="{{ route('ruangan.create') }}">Tambah</a>
+</div>
+<table class="table table-bordered mt-4 ">
+    <thead>
+        <tr class="table-secondary">
+            <th >ID</th>
+            <th >Nama Ruangan</th>
+            <th >Kode Ruangan</th>
+            <th >Bangunan</th>
+            <th >Aksi</th>
+>>>>>>> eab064c8df27f26ca1055c166db3d6bbf0fff1ec
         </tr>
     </thead>
     <tbody>
@@ -125,10 +139,17 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item->nama_ruangan }}</td>
             <td>{{ $item->kode_ruangan }}</td>
+<<<<<<< HEAD
             <td>{{ optional($item->bangunan)->nama_bangunan }}</td>
             <td>
                 <a href="{{ route('ruangan.edit', $item->id) }}">Edit</a>
                 <form action="{{ route('ruangan.destroy', $item->id) }}" method="post" style="display:inline">
+=======
+            <td>{{ optional($item->bangunan)->nama_bangunan ?? optional($item->bangunan)->name ?? 'Bangunan '.$item->bangunan_id }}</td>
+            <td>
+                <a href="{{ route('ruangan.edit', $item->id) }}">Edit</a>
+                <form action="{{ route('ruangan.destroy', $item->id) }}" method="post" style="display:inline-block">
+>>>>>>> eab064c8df27f26ca1055c166db3d6bbf0fff1ec
                     @csrf
                     @method('DELETE')
                     <button type="submit">Hapus</button>
@@ -138,5 +159,8 @@
         @endforeach
     </tbody>
 </table>
+<<<<<<< HEAD
 
+=======
+>>>>>>> eab064c8df27f26ca1055c166db3d6bbf0fff1ec
 @endsection
