@@ -4,7 +4,6 @@
 
 @section('content')
 
-<<<<<<< HEAD
 <style>
     body {
         font-family: 'Inter', sans-serif;
@@ -12,7 +11,8 @@
     }
 
     /* Tombol Tambah */
-    .add-btn {
+    .add-btn,
+    div a {
         display: inline-block;
         padding: 10px 18px;
         background: linear-gradient(135deg, #4f46e5, #6366f1);
@@ -25,13 +25,14 @@
         box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
     }
 
-    .add-btn:hover {
+    .add-btn:hover,
+    div a:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 14px rgba(99, 102, 241, 0.45);
+        box-shadow: 0 6px 14px rgba(99, 102, 241, 0.4);
     }
 
     /* Table wrapper */
-    table {
+    .table {
         width: 100%;
         margin-top: 25px;
         border-collapse: separate;
@@ -43,11 +44,11 @@
     }
 
     /* Header */
-    thead tr {
-        background: #eef2ff !important;
+    .table thead tr {
+        background: #eef2ff;
     }
 
-    th {
+    .table th {
         padding: 14px;
         font-size: 14px;
         font-weight: 700;
@@ -57,13 +58,13 @@
     }
 
     /* Body */
-    td {
+    .table td {
         padding: 14px;
         font-size: 14px;
         border-bottom: 1px solid #f1f1f1;
     }
 
-    tbody tr:hover {
+    .table tbody tr:hover {
         background: #f9fafb;
     }
 
@@ -76,9 +77,8 @@
         border-radius: 8px;
         font-size: 13px;
         font-weight: 600;
-        transition: 0.25s ease;
-        margin-right: 4px;
-        display: inline-block;
+        transition: 0.25s;
+        margin-right: 6px;
     }
 
     td a:hover {
@@ -96,14 +96,20 @@
         cursor: pointer;
         font-weight: 600;
         font-size: 13px;
-        transition: 0.25s ease;
-        margin-left: 2px;
+        transition: 0.25s;
+        margin-left: 4px;
     }
 
     td form button:hover {
         background: #dc2626;
         transform: translateY(-2px);
     }
+
+    td form {
+        display: inline-block;
+        margin: 0;
+    }
+
 </style>
 
 <div>
@@ -118,38 +124,22 @@
             <th>Kode Ruangan</th>
             <th>Bangunan</th>
             <th>Aksi</th>
-=======
-<div>
-    <a href="{{ route('ruangan.create') }}">Tambah</a>
-</div>
-<table class="table table-bordered mt-4 ">
-    <thead>
-        <tr class="table-secondary">
-            <th >ID</th>
-            <th >Nama Ruangan</th>
-            <th >Kode Ruangan</th>
-            <th >Bangunan</th>
-            <th >Aksi</th>
->>>>>>> eab064c8df27f26ca1055c166db3d6bbf0fff1ec
         </tr>
     </thead>
+
     <tbody>
         @foreach ($items as $item)
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $item->nama_ruangan }}</td>
             <td>{{ $item->kode_ruangan }}</td>
-<<<<<<< HEAD
-            <td>{{ optional($item->bangunan)->nama_bangunan }}</td>
+            <td>{{ optional($item->bangunan)->nama_bangunan ?? 'Bangunan ' . $item->bangunan_id }}</td>
+
             <td>
                 <a href="{{ route('ruangan.edit', $item->id) }}">Edit</a>
-                <form action="{{ route('ruangan.destroy', $item->id) }}" method="post" style="display:inline">
-=======
-            <td>{{ optional($item->bangunan)->nama_bangunan ?? optional($item->bangunan)->name ?? 'Bangunan '.$item->bangunan_id }}</td>
-            <td>
-                <a href="{{ route('ruangan.edit', $item->id) }}">Edit</a>
-                <form action="{{ route('ruangan.destroy', $item->id) }}" method="post" style="display:inline-block">
->>>>>>> eab064c8df27f26ca1055c166db3d6bbf0fff1ec
+
+                <form action="{{ route('ruangan.destroy', $item->id) }}" method="POST"
+                      onsubmit="return confirm('Yakin ingin menghapus?')">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Hapus</button>
@@ -159,8 +149,5 @@
         @endforeach
     </tbody>
 </table>
-<<<<<<< HEAD
 
-=======
->>>>>>> eab064c8df27f26ca1055c166db3d6bbf0fff1ec
 @endsection
