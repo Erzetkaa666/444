@@ -20,7 +20,11 @@ class RuanganFactory extends Factory
         return [
             'nama_ruangan' => fake()->sentence(),
             'kode_ruangan' => fake()->unique()->word(),
-            'bangunan_id' => Bangunan::factory(),
+            // Pakai Bangunan yang sudah ada jika tersedia, kalau tidak buat baru lewat factory
+            'bangunan_id' => function() {
+                $exists = Bangunan::inRandomOrder()->first();
+                return $exists ? $exists->id : Bangunan::factory();
+            },
         ];
     }
 }

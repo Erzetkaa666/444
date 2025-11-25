@@ -15,12 +15,12 @@
             </div>
         </div>
 
-        <!-- Quick Stats -->
+        <!-- Quick Stats: total Tanah / Bangunan / Ruangan / Barang -->
         <div class="col-md-3 mb-4">
             <div class="card bg-primary text-white">
                 <div class="card-body">
-                    <h5 class="card-title">Total Aset</h5>
-                    <h2 class="mb-0">{{ $totalAssets ?? 0 }}</h2>
+                    <h5 class="card-title">Total Tanah</h5>
+                    <h2 class="mb-0">{{ $totalTanah ?? 0 }}</h2>
                 </div>
             </div>
         </div>
@@ -28,8 +28,8 @@
         <div class="col-md-3 mb-4">
             <div class="card bg-success text-white">
                 <div class="card-body">
-                    <h5 class="card-title">Aset Aktif</h5>
-                    <h2 class="mb-0">{{ $activeAssets ?? 0 }}</h2>
+                    <h5 class="card-title">Total Bangunan</h5>
+                    <h2 class="mb-0">{{ $totalBangunan ?? 0 }}</h2>
                 </div>
             </div>
         </div>
@@ -37,8 +37,8 @@
         <div class="col-md-3 mb-4">
             <div class="card bg-warning text-white">
                 <div class="card-body">
-                    <h5 class="card-title">Maintenance</h5>
-                    <h2 class="mb-0">{{ $maintenanceAssets ?? 0 }}</h2>
+                    <h5 class="card-title">Total Ruangan</h5>
+                    <h2 class="mb-0">{{ $totalRuangan ?? 0 }}</h2>
                 </div>
             </div>
         </div>
@@ -46,8 +46,8 @@
         <div class="col-md-3 mb-4">
             <div class="card bg-danger text-white">
                 <div class="card-body">
-                    <h5 class="card-title">Rusak</h5>
-                    <h2 class="mb-0">{{ $brokenAssets ?? 0 }}</h2>
+                    <h5 class="card-title">Total Barang</h5>
+                    <h2 class="mb-0">{{ $totalBarang ?? 0 }}</h2>
                 </div>
             </div>
         </div>

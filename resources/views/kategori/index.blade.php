@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Tanah')
+@section('title', 'Data Kategori')
 
 @section('content')
 
@@ -11,11 +11,11 @@
     }
 
     /* Tombol Tambah */
-    .add-btn {
+    div a {
         display: inline-block;
         padding: 10px 18px;
         background: linear-gradient(135deg, #4f46e5, #6366f1);
-        color: white !important;
+        color: white;
         font-weight: 600;
         text-decoration: none;
         border-radius: 10px;
@@ -24,13 +24,13 @@
         box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
     }
 
-    .add-btn:hover {
+    div a:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 14px rgba(99, 102, 241, 0.45);
+        box-shadow: 0 6px 14px rgba(99, 102, 241, 0.4);
     }
 
-    /* Table wrapper */
-    table {
+    /* Table modern */
+    .table {
         width: 100%;
         margin-top: 25px;
         border-collapse: separate;
@@ -41,12 +41,11 @@
         box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     }
 
-    /* Header */
-    thead tr {
-        background: #eef2ff !important;
+    .table thead tr {
+        background: #eef2ff;
     }
 
-    th {
+    .table th {
         padding: 14px;
         font-size: 14px;
         font-weight: 700;
@@ -55,14 +54,14 @@
         letter-spacing: .5px;
     }
 
-    /* Body */
-    td {
+    .table td {
         padding: 14px;
         font-size: 14px;
         border-bottom: 1px solid #f1f1f1;
+        color: #374151;
     }
 
-    tbody tr:hover {
+    .table tbody tr:hover {
         background: #f9fafb;
     }
 
@@ -70,14 +69,13 @@
     td a {
         padding: 7px 14px;
         background: #f59e0b;
-        color: white !important;
+        color: white;
         text-decoration: none;
         border-radius: 8px;
         font-size: 13px;
         font-weight: 600;
-        transition: 0.25s ease;
-        margin-right: 4px;
-        display: inline-block;
+        transition: 0.25s;
+        margin-right: 6px;
     }
 
     td a:hover {
@@ -95,34 +93,24 @@
         cursor: pointer;
         font-weight: 600;
         font-size: 13px;
-        transition: 0.25s ease;
-        margin-left: 2px;
+        transition: 0.25s;
     }
 
     td form button:hover {
         background: #dc2626;
         transform: translateY(-2px);
     }
-
-    /* Agar tombol hapus sejajar */
-    td form {
-        display: inline-block;
-        margin: 0;
-    }
 </style>
 
 <div>
-    <a href="{{ route('tanah.create') }}" class="add-btn">Tambah</a>
+    <a href="{{ route('kategori.create') }}">Tambah</a>
 </div>
 
-<table class="table table-bordered mt-4 ">
+<table class="table table-bordered mt-4">
     <thead>
         <tr class="table-secondary">
             <th>ID</th>
-            <th>Nama Tanah</th>
-            <th>Kode Tanah</th>
-            <th>Luas</th>
-            <th>No Sertifikat</th>
+            <th>Nama Kategori</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -130,13 +118,10 @@
         @foreach ($items as $item)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $item->nama_tanah }}</td>
-            <td>{{ $item->kode_tanah }}</td>
-            <td>{{ $item->luas }}</td>
-            <td>{{ $item->no_sertifikat }}</td>
+            <td>{{ $item->nama_kategori }}</td>
             <td>
-                <a href="{{ route('tanah.edit', $item->id) }}">Edit</a>
-                <form action="{{ route('tanah.destroy', $item->id) }}" method="post">
+                <a href="{{ route('kategori.edit', $item->id) }}">Edit</a>
+                <form action="{{ route('kategori.destroy', $item->id) }}" method="post" style="display:inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Hapus</button>

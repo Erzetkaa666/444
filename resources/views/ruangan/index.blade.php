@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Data Tanah')
+@section('title', 'Data Ruangan')
 
 @section('content')
 
@@ -103,26 +103,19 @@
         background: #dc2626;
         transform: translateY(-2px);
     }
-
-    /* Agar tombol hapus sejajar */
-    td form {
-        display: inline-block;
-        margin: 0;
-    }
 </style>
 
 <div>
-    <a href="{{ route('tanah.create') }}" class="add-btn">Tambah</a>
+    <a href="{{ route('ruangan.create') }}" class="add-btn">Tambah</a>
 </div>
 
-<table class="table table-bordered mt-4 ">
+<table class="table table-bordered mt-4">
     <thead>
         <tr class="table-secondary">
             <th>ID</th>
-            <th>Nama Tanah</th>
-            <th>Kode Tanah</th>
-            <th>Luas</th>
-            <th>No Sertifikat</th>
+            <th>Nama Ruangan</th>
+            <th>Kode Ruangan</th>
+            <th>Bangunan</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -130,13 +123,12 @@
         @foreach ($items as $item)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $item->nama_tanah }}</td>
-            <td>{{ $item->kode_tanah }}</td>
-            <td>{{ $item->luas }}</td>
-            <td>{{ $item->no_sertifikat }}</td>
+            <td>{{ $item->nama_ruangan }}</td>
+            <td>{{ $item->kode_ruangan }}</td>
+            <td>{{ optional($item->bangunan)->nama_bangunan }}</td>
             <td>
-                <a href="{{ route('tanah.edit', $item->id) }}">Edit</a>
-                <form action="{{ route('tanah.destroy', $item->id) }}" method="post">
+                <a href="{{ route('ruangan.edit', $item->id) }}">Edit</a>
+                <form action="{{ route('ruangan.destroy', $item->id) }}" method="post" style="display:inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Hapus</button>

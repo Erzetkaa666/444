@@ -21,8 +21,15 @@ class BarangFactory extends Factory
         return [
             'nama_barang' => fake()->word(),
             'kode_inventaris' => fake()->word(),
-            'kategori_id' => Kategori::factory(),
-            'ruangan_id' => Ruangan::factory(),
+            // Pilih Kategori/Ruangan yang sudah ada jika tersedia, kalau tidak buat baru
+            'kategori_id' => function() {
+                $exists = Kategori::inRandomOrder()->first();
+                return $exists ? $exists->id : Kategori::factory();
+            },
+            'ruangan_id' => function() {
+                $exists = Ruangan::inRandomOrder()->first();
+                return $exists ? $exists->id : Ruangan::factory();
+            },
             'tahun_pengadaan' => fake()->randomNumber(),
             'sumber_dana' => fake()->word(),
             'kondisi' => fake()->word(),

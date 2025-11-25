@@ -20,7 +20,11 @@ class BangunanFactory extends Factory
         return [
             'nama_bangunan' => fake()->word(),
             'kode_bangunan' => fake()->unique()->word(),
-            'tanah_id' => Tanah::factory(),
+            // Pakai Tanah yang sudah ada jika tersedia, kalau tidak buat baru lewat factory
+            'tanah_id' => function() {
+                $exists = Tanah::inRandomOrder()->first();
+                return $exists ? $exists->id : Tanah::factory();
+            },
         ];
     }
 }

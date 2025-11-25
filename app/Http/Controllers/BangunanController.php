@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bangunan;
+use App\Models\Tanah;
 
 class BangunanController extends Controller
 {
@@ -13,7 +15,8 @@ class BangunanController extends Controller
 
     public function create()
     {
-        return view('bangunan.create');
+        $tanahs = Tanah::all();
+        return view('bangunan.create', ['tanahs' => $tanahs]);
     }
 
     public function store(Request $request) {
@@ -39,8 +42,9 @@ class BangunanController extends Controller
      */
     public function edit(string $id)
     {
-        $bangunan = Bangunan::find($id);
-        return view('bangunan.edit', ['bangunan'=>$bangunan]);
+        $bangunan = Bangunan::findOrFail($id);
+        $tanahs = Tanah::all();
+        return view('bangunan.edit', ['bangunan' => $bangunan, 'tanahs' => $tanahs]);
     }
 
     /**
