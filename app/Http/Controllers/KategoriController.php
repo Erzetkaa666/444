@@ -8,6 +8,10 @@ use App\Models\Kategori;
 
 class KategoriController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(\App\Http\Middleware\IsAdmin::class)->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
     public function index()
     {
         $kategoris = Kategori::all();

@@ -16,28 +16,32 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
+        $request->validate([
+            'email'    => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        // Ambil user berdasarkan email
+        $user = User::where('email', $request->email)->first();
+
+        // Cek apakah user ada dan password cocok
+        if ($user && Hash::check($request->password, $user->password)) {
+
+            // Login manual supaya semua field (termasuk role) dimuat
+            Auth::login($user);
+
+            // Regenerate session
             $request->session()->regenerate();
-            // sukses login
-            return redirect()->intended(route('dashboard'))->with('success', 'Login Berhasil, selamat datang!');
+
+            return redirect()->route('dashboard')
+                ->with('success', 'Login berhasil! Selamat datang, ' . $user->name . '.');
         }
 
-        // gagal login: kembali ke form dengan pesan error
+        // Jika gagal login
         return back()->withErrors([
-            'email' => 'Kredensial tidak cocok dengan data kami.',
+            'email' => 'Email atau password salah.',
         ])->onlyInput('email');
     }
-
-    /**
-
-     * Log the user out of the application.
-
-     */
 
     public function logout(Request $request)
     {
@@ -47,34 +51,31 @@ class AuthController extends Controller
         return redirect()->route('login');
     }
 
-    /**
-     * Show registration form for new users.
-     */
     public function registerForm()
     {
         return view('auth.register');
     }
 
-    /**
-     * Handle registration and auto-login.
-     */
     public function register(Request $request)
     {
         $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:users,email'],
+            'name'     => ['required', 'string', 'max:255'],
+            'email'    => ['required', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', 'min:6'],
         ]);
 
-        // create user (password will be hashed by model casting or explicitly)
+        // Buat akun dengan role default 'user'
         $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
+            'name'     => $validated['name'],
+            'email'    => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'role'     => 'user',
         ]);
 
-        // auto-login and redirect
+        // Auto-login
         Auth::login($user);
-        return redirect()->route('dashboard')->with('success', 'Akun berhasil dibuat. Selamat datang!');
+
+        return redirect()->route('dashboard')
+            ->with('success', 'Akun berhasil dibuat! Selamat datang.');
     }
 }

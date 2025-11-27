@@ -11,6 +11,10 @@ use App\Models\Activity;
 
 class BarangController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(\App\Http\Middleware\IsAdmin::class)->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
     public function index()
     {
         $barangs = Barang::with(['ruangan', 'kategori'])->get();

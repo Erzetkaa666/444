@@ -8,6 +8,10 @@ use App\Models\Tanah;
 
 class BangunanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(\App\Http\Middleware\IsAdmin::class)->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
     public function index() {
         $bangunan = Bangunan::all();
         return view('bangunan.index', ['items' => $bangunan]);

@@ -1,0 +1,110 @@
+/* --------------------------------------------------
+   GLOBAL TYPOGRAPHY & SMOOTH UI
+-------------------------------------------------- */
+body {
+    font-family: 'Instrument Sans', 'Segoe UI', sans-serif;
+    background: #f5f7fb;
+}
+
+/* --------------------------------------------------
+   NAVBAR IMPROVEMENT
+-------------------------------------------------- */
+.navbar {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* Dropdown menu modern */
+.dropdown-menu {
+    border-radius: 14px;
+    padding: 10px 0;
+    border: none;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.dropdown-item {
+    padding: 10px 18px;
+    font-size: 15px;
+}
+
+.dropdown-item:hover {
+    background: #eef3ff;
+}
+
+/* Profile section in dropdown */
+.dropdown-header {
+    font-weight: 600;
+    padding-bottom: 4px;
+}
+
+.dropdown-email {
+    font-size: 13px;
+    opacity: .75;
+}
+
+/* --------------------------------------------------
+   CARD MODERN STYLE
+-------------------------------------------------- */
+.card {
+    border: none !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    transition: .25s ease;
+    background: #fff;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+}
+
+/* Quick stat cards */
+.card.bg-primary,
+.card.bg-success,
+.card.bg-warning,
+.card.bg-danger {
+    border-radius: 16px !important;
+    color: white !important;
+}
+
+/* --------------------------------------------------
+   TABLE MODERN STYLE
+-------------------------------------------------- */
+.table {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: #f1f3f9;
+    font-weight: 600;
+}
+
+.table tbody tr {
+    transition: .2s;
+}
+
+.table tbody tr:hover {
+    background: #eef3ff;
+}
+
+/* --------------------------------------------------
+   ROLE BADGE
+-------------------------------------------------- */
+.role-badge {
+    background: #eef3ff;
+    border: 1px solid #d8e0ff;
+    padding: 2px 8px;
+    font-size: 11px;
+    border-radius: 8px;
+    margin-left: 4px;
+}
+
+/* --------------------------------------------------
+   ALERT SMOOTH
+-------------------------------------------------- */
+.alert {
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 15px;
+}

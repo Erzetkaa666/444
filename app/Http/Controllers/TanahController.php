@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class TanahController extends Controller
 {
+    public function __construct()
+    {
+        // Pastikan hanya admin bisa mengakses route yang mengubah data
+        $this->middleware(\App\Http\Middleware\IsAdmin::class)->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
     public function index() {
         $tanah = Tanah::all();
         return view('tanah.index', ['items' => $tanah]);

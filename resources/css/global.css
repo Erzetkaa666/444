@@ -1,0 +1,218 @@
+/* ---------------------------------------------------
+   GLOBAL WHITE THEME
+--------------------------------------------------- */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #FFFFFF; 
+    color: #1E293B;
+}
+
+/* Utility margin */
+.mt-4 { margin-top: 1.5rem; }
+
+/* ---------------------------------------------------
+   NAVBAR (White Clean Corporate)
+--------------------------------------------------- */
+nav {
+    font-family: 'Inter', sans-serif;
+    background: #FFFFFF;
+    padding: 14px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+/* MENU */
+.menu {
+    display: flex;
+    gap: 18px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #334155; /* Slate-700 */
+    font-weight: 500;
+    font-size: 15px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: 0.25s ease;
+    position: relative;
+}
+
+/* Hover */
+.menu a:hover {
+    background: #F1F5F9;
+    transform: translateY(-2px);
+    color: #0F172A; /* Slate-900 */
+}
+
+/* Active underline */
+.menu a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 20%;
+    width: 60%;
+    height: 3px;
+    background: #0284C7; /* Sky-600 */
+    border-radius: 10px;
+}
+
+/* ---------------------------------------------------
+   PROFILE AVATAR
+--------------------------------------------------- */
+.profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #F1F5F9;
+    color: #1E293B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.25s ease;
+    border: 1px solid #E2E8F0;
+}
+
+.profile:hover {
+    background: #E2E8F0;
+    transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------
+   DROPDOWN
+--------------------------------------------------- */
+.dropdown-menu {
+    border-radius: 14px;
+    padding: 10px 0;
+    border: none;
+    min-width: 240px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+}
+
+.dropdown-item {
+    padding: 10px 18px;
+    font-size: 15px;
+    border-radius: 6px;
+}
+
+.dropdown-item:hover {
+    background: #F1F5F9;
+}
+
+.dropdown-item.text-danger:hover {
+    background: #FEE2E2;
+    color: #B91C1C;
+}
+
+/* ---------------------------------------------------
+   BUTTON "TAMBAH"
+--------------------------------------------------- */
+.btn-add {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #0284C7; 
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.25s ease;
+    box-shadow: 0 4px 16px rgba(2, 132, 199, 0.25);
+}
+
+.btn-add:hover {
+    background: #0369A1;
+    transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------
+   TABLE WHITE MODE
+--------------------------------------------------- */
+.table-clean {
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+    background: #FFFFFF;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* HEAD */
+.table-clean thead {
+    background: #F1F5F9;
+}
+
+.table-clean th {
+    padding: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1E293B;
+    text-transform: uppercase;
+    border-bottom: 1px solid #E2E8F0;
+    letter-spacing: 0.4px;
+}
+
+/* BODY */
+.table-clean td {
+    padding: 14px;
+    font-size: 14px;
+    color: #334155;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+/* Row striping */
+.table-clean tbody tr:nth-child(even) {
+    background: #F8FAFC;
+}
+
+.table-clean tbody tr:hover {
+    background: #E2E8F0;
+    transition: 0.25s ease;
+}
+
+/* ---------------------------------------------------
+   ACTION BUTTONS
+--------------------------------------------------- */
+.btn-edit {
+    display: inline-block;
+    padding: 7px 14px;
+    background: #FBBF24;
+    color: #1E293B;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.25s ease;
+    text-decoration: none;
+}
+
+.btn-edit:hover {
+    background: #F59E0B;
+    transform: translateY(-2px);
+}
+
+.btn-delete {
+    padding: 7px 14px;
+    background: #DC2626;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: 0.25s ease;
+}
+
+.btn-delete:hover {
+    background: #B91C1C;
+    transform: translateY(-2px);
+}

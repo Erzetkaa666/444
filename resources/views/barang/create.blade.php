@@ -50,7 +50,7 @@
                 </div>
                 <div class="mb-2">
                     <button type="submit" class="btn btn-success me-2">Submit</button>
-                    <button type="reset" class="btn btn-outline-secondary me-2">Batal</button>
+                    <a href="{{ route('barang.index') }}" class="btn btn-outline-secondary me-2">Batal</a>
                 </div>
             </form>
         </div>

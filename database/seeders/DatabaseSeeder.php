@@ -23,9 +23,10 @@ class DatabaseSeeder extends Seeder
             'no_sertifikat' => 'SERT001',
         ]);
         
-        // Pastikan urutan seeding: Tanah -> Bangunan -> Ruangan -> Kategori -> Barang
+        // Pastikan urutan seeding: Admin -> Tanah -> Bangunan -> Ruangan -> Kategori -> Barang
         // sehingga setiap child akan menggunakan parent yang sudah ada di database.
         $this->call([
+            AdminUserSeeder::class,
             TanahSeeder::class,
             BangunanSeeder::class,
             RuanganSeeder::class,

@@ -3,6 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content')
+
+@push('styles')
+    {{-- Load dashboard-specific CSS from Vite (fallback via layout asset exists) --}}
+    @vite(['resources/css/dashboard.css'])
+@endpush
+
+
     <div class="row">
 
         <!-- Welcome Section -->
@@ -15,7 +22,7 @@
             </div>
         </div>
 
-        <!-- Quick Stats: total Tanah / Bangunan / Ruangan / Barang -->
+        <!-- Quick Stats -->
         <div class="col-md-3 mb-4">
             <div class="card bg-primary text-white">
                 <div class="card-body">
@@ -59,6 +66,7 @@
                     <h5 class="card-title">Aktivitas Terakhir</h5>
                 </div>
                 <div class="card-body">
+
                     @if (isset($recentActivities) && count($recentActivities) > 0)
                         <div class="table-responsive">
                             <table class="table">
@@ -75,26 +83,40 @@
                                         <tr>
                                             <td>{{ $activity->created_at->format('d/m/Y H:i') }}</td>
                                             <td>{{ $activity->description }}</td>
-                                            <td>{{ $activity->user->name }}</td>
+
+                                            <!-- Tampilkan nama user + role -->
+                                            <td>
+                                                {{ $activity->user->name }}
+                                                <span class="text-muted">
+                                                    ({{ $activity->user->role ?? 'Tidak ada role' }})
+                                                </span>
+                                            </td>
+
                                             <td>{{ $activity->status }}</td>
                                         </tr>
                                     @empty
-                                        <div class="alert alert-info">Tidak ada aktifitas terbaru</div>
+                                        <tr>
+                                            <td colspan="4" class="text-center text-muted">
+                                                Tidak ada aktivitas terbaru
+                                            </td>
+                                        </tr>
                                     @endforelse
                                 </tbody>
                             </table>
                         </div>
                     @else
-                        <p class="text-center">Tidak ada aktivitas terbaru</p>
+                        <p class="text-center text-muted">Tidak ada aktivitas terbaru</p>
                     @endif
+
                 </div>
             </div>
         </div>
+
     </div>
 @endsection
 
 @push('scripts')
     <script>
-        // Add any custom JavaScript here
+        // Custom JS
     </script>
 @endpush

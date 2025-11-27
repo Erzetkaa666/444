@@ -8,6 +8,10 @@ use App\Models\Bangunan;
 
 class RuanganController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(\App\Http\Middleware\IsAdmin::class)->only(['create', 'store', 'edit', 'update', 'destroy']);
+    }
     public function index()
     {
         $ruangans = Ruangan::with('bangunan')->get();
