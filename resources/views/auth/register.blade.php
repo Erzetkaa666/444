@@ -3,76 +3,162 @@
 @section('title', 'Register')
 
 @section('content')
+
 <style>
-/* reuse login styles for register */
-.flex-1.row { display: flex !important; justify-content: center; align-items: center; min-height: calc(100vh - 120px); padding: 20px; }
-.col-6.mx-auto { width: 420px; max-width: 100%; margin: 0 auto; }
-.card { background-color: #171717; border: 1px solid #2b2b2b; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.6); overflow: hidden; }
-.card.m-4 { margin: 1rem !important; }
-.card-header { background: linear-gradient(90deg, rgba(0,173,181,0.06), rgba(0,0,0,0)); padding: 18px 20px; border-bottom: 1px solid rgba(255,255,255,0.03); }
-.card-title { margin: 0; font-size: 1.25rem; color: #ffffff; }
-.card-body { padding: 20px; }
-.form-label { display: block; margin-bottom: 6px; color: #cfcfcf; font-weight: 600; }
-.form-control { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #333; background-color: #151515; color: #f1f1f1; transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease; font-size: 0.95rem; }
-.form-control::placeholder { color: #8f8f8f; }
-.form-control:focus { border-color: #00adb5; outline: none; box-shadow: 0 0 0 6px rgba(0,173,181,0.06); }
-.mb-2 { margin-bottom: 0.75rem !important; }
-.btn { display: inline-block; padding: 10px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; text-align: center; transition: transform 0.08s ease, box-shadow 0.12s ease, background 0.12s ease; border: none; }
-.btn-block { display: block; width: 100%; }
-.btn-success { background-color: #00adb5; color: #ffffff; box-shadow: 0 6px 14px rgba(0,173,181,0.12); }
-.btn-success:hover { transform: translateY(-2px); background-color: #00a3a8; }
-.btn-outline-secondary { background: transparent; color: #eaeaea; border: 1px solid #3a3a3a; }
-.btn-outline-secondary:hover { background: rgba(255,255,255,0.02); transform: translateY(-2px); }
-.me-2 { margin-right: 0.5rem !important; }
-.text-muted { color: #a6a6a6 !important; margin: 8px 0; font-size: 0.95rem; }
-@media (max-width: 480px) { .col-6.mx-auto { width: 92%; padding: 0 6px; } .card { border-radius: 10px; } .card-header, .card-body { padding: 14px; } }
+/* ---------------------------------------------------
+   REGISTER PAGE STYLE — identical to login style
+--------------------------------------------------- */
+
+.login-wrapper {
+    max-width: 480px;
+    margin: 50px auto;
+}
+
+.login-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.12);
+    border: 1px solid #e5e7eb;
+}
+
+.login-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1E3A8A;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-description {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+/* Input */
+.form-control-modern {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.25s;
+}
+
+.form-control-modern:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139,92,246,0.25);
+    outline: none;
+}
+
+/* Button */
+.btn-primary-modern {
+    width: 100%;
+    background: #7C3AED;
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.btn-primary-modern:hover {
+    background: #6D28D9;
+    transform: translateY(-2px);
+}
+
+.btn-outline-modern {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 2px solid #1E3A8A;
+    color: #1E3A8A;
+    background: transparent;
+    transition: 0.25s;
+}
+
+.btn-outline-modern:hover {
+    background: #1E3A8A;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Link */
+.text-small {
+    text-align: center;
+    margin-top: 12px;
+    color: #475569;
+}
+
+.text-small a {
+    text-decoration: none;
+    color: #7C3AED;
+    font-weight: 600;
+}
+
+.text-small a:hover {
+    text-decoration: underline;
+}
 </style>
 
-    <div class="flex-1 row">
-        <div class="col-6 mx-auto">
-            <div class="card m-4">
-                <div class="card-header">
-                    <h2 class="card-title text-center">Register</h2>
-                </div>
-                <div class="card-body">
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            <ul class="mb-0">
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    <form action="{{ route('register') }}" method="post">
-                        @csrf
-                        <div class="mb-2">
-                            <label for="inputName" class="form-label">Nama</label>
-                            <input type="text" name="name" id="inputName" value="{{ old('name') }}" class="form-control">
-                        </div>
-                        <div class="mb-2">
-                            <label for="inputEmail" class="form-label">Email</label>
-                            <input type="email" name="email" id="inputEmail" value="{{ old('email') }}" class="form-control">
-                        </div>
-                        <div class="mb-2">
-                            <label for="inputPassword" class="form-label">Password</label>
-                            <input type="password" name="password" id="inputPassword" class="form-control">
-                        </div>
-                        <div class="mb-2">
-                            <label for="inputPasswordConfirm" class="form-label">Konfirmasi Password</label>
-                            <input type="password" name="password_confirmation" id="inputPasswordConfirm" class="form-control">
-                        </div>
-                        <div class="mb-2 row">
-                            <div class="col-6 mx-auto">
-                                <button type="submit" class="btn btn-block btn-success me-2">Register</button>
-                                <p class="text-muted">Sudah punya akun?</p>
-                                <a href="{{ route('login') }}" class="btn btn-outline-secondary me-2">Login</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<div class="login-wrapper">
+    <div class="login-card">
+
+        <h2 class="login-title">Buat Akun Baru</h2>
+        <p class="login-description">Daftar untuk mulai menggunakan aplikasi</p>
+
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-        </div>
+        @endif
+
+        <form action="{{ route('register') }}" method="post">
+            @csrf
+
+            <div class="mb-3">
+                <label>Nama</label>
+                <input type="text" name="name" value="{{ old('name') }}"
+                       class="form-control-modern" placeholder="Masukkan nama...">
+            </div>
+
+            <div class="mb-3">
+                <label>Email</label>
+                <input type="email" name="email" value="{{ old('email') }}"
+                       class="form-control-modern" placeholder="Masukkan email...">
+            </div>
+
+            <div class="mb-3">
+                <label>Password</label>
+                <input type="password" name="password"
+                       class="form-control-modern" placeholder="Masukkan password...">
+            </div>
+
+            <div class="mb-3">
+                <label>Konfirmasi Password</label>
+                <input type="password" name="password_confirmation"
+                       class="form-control-modern" placeholder="Masukkan ulang password...">
+            </div>
+
+            <button type="submit" class="btn-primary-modern">Register</button>
+
+            <p class="text-small">
+                Sudah punya akun?
+                <a href="{{ route('login') }}">Login di sini</a>
+            </p>
+        </form>
+
     </div>
+</div>
 
 @endsection

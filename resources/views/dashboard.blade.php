@@ -24,41 +24,32 @@
 
         <!-- Quick Stats -->
         <div class="col-md-3 mb-4">
-            <div class="card bg-primary text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Total Tanah</h5>
-                    <h2 class="mb-0">{{ $totalTanah ?? 0 }}</h2>
-                </div>
-            </div>
-        </div>
+    <div class="card-stat bg-primary">
+        <h5>Total Tanah</h5>
+        <h2>{{ $totalTanah ?? 0 }}</h2>
+    </div>
+</div>
 
-        <div class="col-md-3 mb-4">
-            <div class="card bg-success text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Total Bangunan</h5>
-                    <h2 class="mb-0">{{ $totalBangunan ?? 0 }}</h2>
-                </div>
-            </div>
-        </div>
+<div class="col-md-3 mb-4">
+    <div class="card-stat bg-success">
+        <h5>Total Bangunan</h5>
+        <h2>{{ $totalBangunan ?? 0 }}</h2>
+    </div>
+</div>
 
-        <div class="col-md-3 mb-4">
-            <div class="card bg-warning text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Total Ruangan</h5>
-                    <h2 class="mb-0">{{ $totalRuangan ?? 0 }}</h2>
-                </div>
-            </div>
-        </div>
+<div class="col-md-3 mb-4">
+    <div class="card-stat bg-warning">
+        <h5>Total Ruangan</h5>
+        <h2>{{ $totalRuangan ?? 0 }}</h2>
+    </div>
+</div>
 
-        <div class="col-md-3 mb-4">
-            <div class="card bg-danger text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Total Barang</h5>
-                    <h2 class="mb-0">{{ $totalBarang ?? 0 }}</h2>
-                </div>
-            </div>
-        </div>
-
+<div class="col-md-3 mb-4">
+    <div class="card-stat bg-danger">
+        <h5>Total Barang</h5>
+        <h2>{{ $totalBarang ?? 0 }}</h2>
+    </div>
+</div>
         <!-- Recent Activity -->
         <div class="col-12">
             <div class="card">

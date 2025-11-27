@@ -11,6 +11,11 @@ class AuthController extends Controller
 {
     public function loginForm()
     {
+        // Cegah user login membuka /login
+        if (auth()->check()) {
+            return redirect()->route('dashboard');
+        }
+
         return view('auth.login');
     }
 
@@ -53,6 +58,11 @@ class AuthController extends Controller
 
     public function registerForm()
     {
+        // Cegah user login membuka /register
+        if (auth()->check()) {
+            return redirect()->route('dashboard');
+        }
+
         return view('auth.register');
     }
 

@@ -1,111 +1,145 @@
-/* --------------------------------------------------
-   GLOBAL TYPOGRAPHY & SMOOTH UI
--------------------------------------------------- */
+/* ---------------------------------------------------
+   DASHBOARD — Modern Elegant UI
+   Clean cards, smooth shadow, soft colors
+--------------------------------------------------- */
+
 body {
-    font-family: 'Instrument Sans', 'Segoe UI', sans-serif;
-    background: #f5f7fb;
+    background: #f5f7fb !important;
 }
 
-/* --------------------------------------------------
-   NAVBAR IMPROVEMENT
--------------------------------------------------- */
-.navbar {
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-}
-
-/* Dropdown menu modern */
-.dropdown-menu {
-    border-radius: 14px;
-    padding: 10px 0;
-    border: none;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-}
-
-.dropdown-item {
-    padding: 10px 18px;
-    font-size: 15px;
-}
-
-.dropdown-item:hover {
-    background: #eef3ff;
-}
-
-/* Profile section in dropdown */
-.dropdown-header {
-    font-weight: 600;
-    padding-bottom: 4px;
-}
-
-.dropdown-email {
-    font-size: 13px;
-    opacity: .75;
-}
-
-/* --------------------------------------------------
-   CARD MODERN STYLE
--------------------------------------------------- */
+/* Card General */
 .card {
     border: none !important;
-    border-radius: 16px !important;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
-    transition: .25s ease;
-    background: #fff;
+    border-radius: 18px !important;
+    background: #ffffff !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
 }
 
-/* Quick stat cards */
-.card.bg-primary,
-.card.bg-success,
-.card.bg-warning,
-.card.bg-danger {
-    border-radius: 16px !important;
+/* Title in welcome card */
+.card-title {
+    font-weight: 700;
+    font-size: 22px;
+    color: #1e293b;
+}
+
+.card-text {
+    color: #64748b;
+    margin-top: -4px;
+}
+
+/* ---------------------------------------------------
+   STAT CARDS — Elegant gradient with soft shadow
+--------------------------------------------------- */
+.card-stat {
+    padding: 22px;
+    border-radius: 18px !important;
     color: white !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    transition: 0.3s;
 }
 
-/* --------------------------------------------------
-   TABLE MODERN STYLE
--------------------------------------------------- */
+.card-stat:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.18);
+}
+
+/* Custom gradient backgrounds */
+.bg-primary {
+    background: linear-gradient(135deg, #1e40af, #3b82f6) !important;
+}
+
+.bg-success {
+    background: linear-gradient(135deg, #166534, #22c55e) !important;
+}
+
+.bg-warning {
+    background: linear-gradient(135deg, #ca8a04, #facc15) !important;
+}
+
+.bg-danger {
+    background: linear-gradient(135deg, #b91c1c, #ef4444) !important;
+}
+
+.card-stat h5 {
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.card-stat h2 {
+    font-weight: 800;
+}
+
+/* ---------------------------------------------------
+   TABLES — Modern clean table
+--------------------------------------------------- */
 .table {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
+    border-collapse: separate !important;
+    border-spacing: 0 8px !important;
 }
 
-.table thead {
-    background: #f1f3f9;
-    font-weight: 600;
+.table thead th {
+    background: none !important;
+    border: none !important;
+    color: #475569;
+    font-weight: 700;
+    padding-bottom: 12px;
 }
 
 .table tbody tr {
-    transition: .2s;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.06);
+    transition: 0.2s;
 }
 
 .table tbody tr:hover {
-    background: #eef3ff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.10);
 }
 
-/* --------------------------------------------------
-   ROLE BADGE
--------------------------------------------------- */
-.role-badge {
-    background: #eef3ff;
-    border: 1px solid #d8e0ff;
-    padding: 2px 8px;
-    font-size: 11px;
-    border-radius: 8px;
-    margin-left: 4px;
-}
-
-/* --------------------------------------------------
-   ALERT SMOOTH
--------------------------------------------------- */
-.alert {
-    border-radius: 12px;
-    padding: 14px 20px;
+.table td {
+    border: none !important;
+    padding: 16px 20px !important;
     font-size: 15px;
+    color: #1e293b;
 }
 
+/* Make first and last TD rounded */
+.table tbody tr td:first-child {
+    border-radius: 12px 0 0 12px;
+}
+
+.table tbody tr td:last-child {
+    border-radius: 0 12px 12px 0;
+}
+
+/* Status badge */
+.badge-status {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.badge-created { background: #d1fae5; color: #065f46; }
+.badge-updated { background: #fef3c7; color: #92400e; }
+.badge-deleted { background: #fee2e2; color: #991b1b; }
+
+/* ---------------------------------------------------
+   RESPONSIVE
+--------------------------------------------------- */
+@media (max-width: 768px) {
+    .card-stat h2 {
+        font-size: 26px;
+    }
+    .table td {
+        font-size: 14px;
+    }
+}
