@@ -1,3 +1,8 @@
+
+https://github.com/user-attachments/assets/470bae6c-edf0-4ddc-8ac0-3ddd53fd2de1
+
+
+
 # 🏢 Sistem Informasi Manajemen Aset (Asset Management System)
 
 Sistem informasi berbasis Laravel untuk mengelola data aset perusahaan secara hierarki: dari **Tanah** → **Bangunan** → **Ruangan** → **Barang**. Dilengkapi dengan otentikasi pengguna, kontrol akses berbasis role (admin/user), logging aktivitas, dan dashboard statistik real-time.
