@@ -48,20 +48,19 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
+        // Karena name & email DISABLED di form edit → tidak perlu divalidasi
         $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $id,
-            'role' => 'required|in:admin,user'
+            'role' => 'required|in:admin,user',
         ]);
 
-        // Update tanpa mengubah password (kecuali diisi)
-        if ($request->password) {
+        // Jika password diisi → update
+        if ($request->filled('password')) {
             $validated['password'] = Hash::make($request->password);
         }
 
         $user->update($validated);
 
-        return redirect()->route('users.index')->with('success', 'User berhasil diperbarui!');
+        return redirect()->route('users.index')->with('success', 'Role user berhasil diperbarui!');
     }
 
     public function destroy($id)
